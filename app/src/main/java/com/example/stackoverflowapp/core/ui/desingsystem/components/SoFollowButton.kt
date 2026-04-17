@@ -9,7 +9,6 @@ import androidx.compose.material.icons.filled.PersonAdd
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.stackoverflowapp.R
 import com.example.stackoverflowapp.core.ui.desingsystem.SoDimens
 import com.example.stackoverflowapp.core.ui.desingsystem.SoTypography
+import com.example.stackoverflowapp.core.ui.theme.SoOrange
 import com.example.stackoverflowapp.core.ui.theme.StackUsersTheme
 
 @Composable
@@ -37,7 +37,7 @@ fun SoFollowButton(
             onClick = onToggle,
             modifier = modifier.semantics { contentDescription = unfollowDescription },
             colors = ButtonDefaults.outlinedButtonColors(
-                contentColor = MaterialTheme.colorScheme.primary
+                contentColor = SoOrange
             )
         ) {
             FollowButtonContent(
@@ -57,7 +57,7 @@ fun SoFollowButton(
             onClick = onToggle,
             modifier = modifier.semantics { contentDescription = followDescription },
             colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary
+                containerColor = SoOrange
             )
         ) {
             FollowButtonContent(
