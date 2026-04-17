@@ -8,6 +8,10 @@ object SoDimens {
     val SoSpacingMd = 12.dp
     val SoSpacingLg = 16.dp
 
+    val SoSpacingXxl = 32.dp
+
+    val SoSpacingXxl2 = 64.dp
+
 
     val SoAvatarSize = 48.dp
 
