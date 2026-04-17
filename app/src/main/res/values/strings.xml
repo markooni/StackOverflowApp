@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">StackoverflowApp</string>
+    <string name="app_name">StackOverflow Users</string>
+    <string name="avatar_description">%s avatar</string>
+    <string name="reputation_format">%s reputation</string>
+    <string name="follow">Follow</string>
+    <string name="following">Following</string>
+    <string name="follow_button_description">Follow %s</string>
+    <string name="unfollow_button_description">Unfollow %s</string>
 </resources>
