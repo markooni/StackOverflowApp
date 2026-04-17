@@ -5,7 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import dagger.hilt.android.AndroidEntryPoint
-import androidx.compose.material3.Text
+import com.example.stackoverflowapp.core.ui.theme.StackUsersTheme
+import com.example.stackoverflowapp.features.users.presentation.screen.UserListScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -13,7 +14,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Text("StackOverflow Users")
+            StackUsersTheme {
+                UserListScreen()
+            }
         }
     }
 }
