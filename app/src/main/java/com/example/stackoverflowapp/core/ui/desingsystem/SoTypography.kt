@@ -14,6 +14,16 @@ object SoTypography {
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
 
+    val SoError: TextStyle
+        @Composable get() = MaterialTheme.typography.bodyLarge.copy(
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
+    val SoTopBar: TextStyle
+        @Composable get() = MaterialTheme.typography.titleLarge.copy(
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
     val SoFollowLabel: TextStyle
         @Composable get() = MaterialTheme.typography.labelMedium
 }
