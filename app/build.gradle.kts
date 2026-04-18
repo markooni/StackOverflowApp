@@ -11,7 +11,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.stackoverflowapp"
+        applicationId = "com.markooni.stackusers"
         minSdk = 29
         targetSdk = 36
         versionCode = 1
@@ -44,8 +44,6 @@ android {
 dependencies {
     // AndroidX Core
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
 
     // Compose
     implementation(platform(libs.compose.bom))

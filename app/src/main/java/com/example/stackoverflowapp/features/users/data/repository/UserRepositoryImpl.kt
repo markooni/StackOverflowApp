@@ -1,11 +1,11 @@
-package com.example.stackoverflowapp.features.users.remote.repository
+package com.example.stackoverflowapp.features.users.data.remote.repository
 
 import com.example.stackoverflowapp.core.domain.error.AppError
 import com.example.stackoverflowapp.core.domain.result.AppResult
 import com.example.stackoverflowapp.features.users.domain.model.User
 import com.example.stackoverflowapp.features.users.domain.repository.UserRepository
-import com.example.stackoverflowapp.features.users.remote.StackOverflowApi
-import com.example.stackoverflowapp.features.users.remote.mapper.toDomainModels
+import com.example.stackoverflowapp.features.users.data.remote.StackOverflowApi
+import com.example.stackoverflowapp.features.users.data.remote.mapper.toDomainModels
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
