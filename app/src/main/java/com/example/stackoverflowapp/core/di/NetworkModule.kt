@@ -1,6 +1,5 @@
 package com.example.stackoverflowapp.core.di
 
-import com.example.stackoverflowapp.features.users.remote.StackOverflowApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,11 +35,5 @@ object NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideStackOverflowApi(retrofit: Retrofit): StackOverflowApi {
-        return retrofit.create(StackOverflowApi::class.java)
     }
 }
