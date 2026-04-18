@@ -1,4 +1,4 @@
-package com.example.stackoverflowapp.core.ui.desingsystem
+package com.example.stackoverflowapp.core.ui.designsystem
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
