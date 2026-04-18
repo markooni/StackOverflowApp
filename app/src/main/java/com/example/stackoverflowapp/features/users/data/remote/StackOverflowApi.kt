@@ -1,6 +1,6 @@
-package com.example.stackoverflowapp.features.users.remote
+package com.example.stackoverflowapp.features.users.data.remote
 
-import com.example.stackoverflowapp.features.users.remote.dto.UsersResponse
+import com.example.stackoverflowapp.features.users.data.remote.dto.UsersResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
