@@ -16,10 +16,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.stackoverflowapp.R
-import com.example.stackoverflowapp.core.ui.desingsystem.SoDimens
-import com.example.stackoverflowapp.core.ui.desingsystem.SoTypography
+import com.example.stackoverflowapp.core.ui.designsystem.SoDimens
+import com.example.stackoverflowapp.core.ui.designsystem.SoTypography
 import com.example.stackoverflowapp.core.ui.theme.SoGray
-import com.example.stackoverflowapp.core.ui.theme.StackUsersTheme
+import com.example.stackoverflowapp.core.ui.theme.StackOverflowTheme
 
 @Composable
 fun ErrorState(
@@ -38,7 +38,7 @@ fun ErrorState(
         Icon(
             imageVector = Icons.Default.CloudOff,
             contentDescription = stringResource(R.string.error_icon_description),
-            modifier = Modifier.size(SoDimens.SoSpacingXxl2),
+            modifier = Modifier.size(SoDimens.SoSpacing4xl),
             tint = SoGray
         )
 
@@ -60,7 +60,7 @@ fun ErrorState(
 @Preview
 @Composable
 private fun ErrorStatePreview() {
-    StackUsersTheme {
+    StackOverflowTheme {
         ErrorState(
             message = "Unable to connect. Please check your internet connection.",
             onRetry = {}
