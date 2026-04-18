@@ -1,67 +1,85 @@
-package com.example.stackoverflowapp.features.users.presentation.viewModel
+package com.example.stackoverflowapp.features.users.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.stackoverflowapp.core.domain.error.AppError
 import com.example.stackoverflowapp.core.domain.result.AppResult
 import com.example.stackoverflowapp.features.users.domain.model.User
-import com.example.stackoverflowapp.features.users.domain.usecase.GetTopUsersUseCase
+import com.example.stackoverflowapp.features.users.domain.repository.UserRepository
+import com.example.stackoverflowapp.features.users.domain.usecase.ObserveUsersWithFollowStateUseCase
+import com.example.stackoverflowapp.features.users.domain.usecase.ToggleFollowUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-sealed interface UserListUiState {
-    data object Loading : UserListUiState
-    data class Success(val users: List<User>) : UserListUiState
-    data class Error(val error: AppError) : UserListUiState
-}
-
 @HiltViewModel
 class UserListViewModel @Inject constructor(
-    private val getTopUsersUseCase: GetTopUsersUseCase
+    private val userRepository: UserRepository,
+    private val observeUsersWithFollowState: ObserveUsersWithFollowStateUseCase,
+    private val toggleFollow: ToggleFollowUseCase,
 ) : ViewModel() {
 
-    private val apiUsers = MutableStateFlow<List<User>>(emptyList())
-    private val isLoading = MutableStateFlow(true)
-    private val errorMessage = MutableStateFlow<AppError?>(null)
+    private val rawUsers = MutableStateFlow<List<User>>(emptyList())
 
-    val uiState: StateFlow<UserListUiState> =
-        combine(isLoading, errorMessage, apiUsers) { loading, error, users ->
-            when {
-                loading -> UserListUiState.Loading
-                error != null -> UserListUiState.Error(error = error)
-                else -> UserListUiState.Success(users)
-            }
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = UserListUiState.Loading
-        )
+    private val _uiState = MutableStateFlow(UserListUiState())
+    val uiState = _uiState.asStateFlow()
+
+    private val _events = MutableSharedFlow<UserListEvent>(
+        replay = 0,
+        extraBufferCapacity = 8,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST,
+    )
+    val events: Flow<UserListEvent> = _events.asSharedFlow()
+
+    private var loadJob: Job? = null
 
     init {
+        viewModelScope.launch {
+            observeUsersWithFollowState(rawUsers).collect { enriched ->
+                _uiState.update { it.copy(users = enriched) }
+            }
+        }
         loadUsers()
     }
 
     fun loadUsers() {
-        viewModelScope.launch {
-            isLoading.value = true
-            errorMessage.value = null
-
-            when (val result = getTopUsersUseCase()) {
+        if (loadJob?.isActive == true) return
+        loadJob = viewModelScope.launch {
+            _uiState.update { it.copy(isLoading = true, error = null) }
+            when (val result = userRepository.getTopUsers()) {
                 is AppResult.Success -> {
-                    apiUsers.value = result.data
+                    rawUsers.value = result.data
+                    _uiState.update { it.copy(isLoading = false, error = null) }
                 }
                 is AppResult.Failure -> {
-                    errorMessage.value = result.error
+                    val hadData = _uiState.value.users.isNotEmpty()
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            error = if (hadData) null else result.error,
+                        )
+                    }
+                    if (hadData) {
+                        _events.tryEmit(UserListEvent.RefreshFailed(result.error))
+                    }
                 }
             }
+        }
+    }
 
-            isLoading.value = false
+    fun onToggleFollow(user: User) {
+        viewModelScope.launch {
+            val result = toggleFollow(user.userId)
+            if (result is AppResult.Failure) {
+                _events.tryEmit(UserListEvent.FollowFailed(user.userId, result.error))
+            }
         }
     }
 }
