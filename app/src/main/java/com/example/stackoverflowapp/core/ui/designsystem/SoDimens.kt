@@ -1,4 +1,4 @@
-package com.example.stackoverflowapp.core.ui.desingsystem
+package com.example.stackoverflowapp.core.ui.designsystem
 
 import androidx.compose.ui.unit.dp
 
@@ -8,16 +8,9 @@ object SoDimens {
     val SoSpacingMd = 12.dp
     val SoSpacingLg = 16.dp
 
-    val SoSpacingXxl = 32.dp
-
-    val SoSpacingXxl2 = 64.dp
-
+    val SoSpacing4xl = 64.dp
 
     val SoAvatarSize = 48.dp
-
-
     val SoCardElevation = 2.dp
-
     val SoIconSizeSm = 20.dp
-
 }
