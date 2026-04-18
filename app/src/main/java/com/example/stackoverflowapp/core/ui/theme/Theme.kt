@@ -20,7 +20,7 @@ private val AppColorScheme = lightColorScheme(
 )
 
 @Composable
-fun StackUsersTheme(content: @Composable () -> Unit) {
+fun StackOverflowTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = AppColorScheme,
         typography = Typography,
