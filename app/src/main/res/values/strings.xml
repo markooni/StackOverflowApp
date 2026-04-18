@@ -13,6 +13,8 @@
     <string name="error_server">Server is unavailable right now.</string>
     <string name="error_http_code">Request failed (code %1$d).</string>
     <string name="error_unexpected">An unexpected error occurred.</string>
+    <string name="error_refresh_failed">Couldn\'t refresh users. Showing the last list.</string>
+    <string name="error_follow_failed">Couldn\'t update follow. Please try again.</string>
     <string name="retry">Retry</string>
     <string name="top_users_title">Top StackOverflow Users</string>
 </resources>

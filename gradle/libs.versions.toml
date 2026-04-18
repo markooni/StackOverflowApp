@@ -10,9 +10,6 @@ activityCompose = "1.13.0"
 lifecycleRuntime = "2.10.0"
 composeBom = "2026.03.01"
 viewmodelCompose = "2.10.0"
-material = "1.13.0"
-appcompat = "1.7.1"
-
 
 # Hilt
 hilt = "2.57.1"
@@ -24,7 +21,6 @@ room = "2.8.4"
 # Networking
 retrofit = "3.0.0"
 okhttp = "5.3.2"
-gson = "2.11.0"
 
 # Image loading
 coil = "2.7.0"
@@ -36,12 +32,9 @@ coroutines = "1.10.2"
 mockk = "1.14.9"
 turbine = "1.2.1"
 
-
 [libraries]
 # AndroidX Core
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 # Compose BOM
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
@@ -90,4 +83,3 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-
