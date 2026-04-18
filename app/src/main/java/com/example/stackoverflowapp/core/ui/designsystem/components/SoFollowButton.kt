@@ -1,4 +1,4 @@
-package com.example.stackoverflowapp.core.ui.desingsystem.components
+package com.example.stackoverflowapp.core.ui.designsystem.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -19,10 +19,10 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.stackoverflowapp.R
-import com.example.stackoverflowapp.core.ui.desingsystem.SoDimens
-import com.example.stackoverflowapp.core.ui.desingsystem.SoTypography
+import com.example.stackoverflowapp.core.ui.designsystem.SoDimens
+import com.example.stackoverflowapp.core.ui.designsystem.SoTypography
 import com.example.stackoverflowapp.core.ui.theme.SoOrange
-import com.example.stackoverflowapp.core.ui.theme.StackUsersTheme
+import com.example.stackoverflowapp.core.ui.theme.StackOverflowTheme
 
 @Composable
 fun SoFollowButton(
@@ -94,7 +94,7 @@ private fun FollowButtonContent(
 @Preview
 @Composable
 private fun FollowButtonUnfollowedPreview() {
-    StackUsersTheme {
+    StackOverflowTheme {
         SoFollowButton(isFollowed = false, onToggle = {}, userName = "Arnel Maric")
     }
 }
