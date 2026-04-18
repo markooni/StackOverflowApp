@@ -1,8 +1,8 @@
-package com.example.stackoverflowapp.features.users.remote.mapper
+package com.example.stackoverflowapp.features.users.data.remote.mapper
 
 
 import com.example.stackoverflowapp.features.users.domain.model.User
-import com.example.stackoverflowapp.features.users.remote.dto.UserDto
+import com.example.stackoverflowapp.features.users.data.remote.dto.UserDto
 
 fun UserDto.toDomainModel(): User {
     return User(
