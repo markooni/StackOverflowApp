@@ -1,4 +1,4 @@
-package com.example.stackoverflowapp.core.ui.desingsystem.components
+package com.example.stackoverflowapp.core.ui.designsystem.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,10 +23,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.stackoverflowapp.R
-import com.example.stackoverflowapp.core.ui.desingsystem.SoDimens
-import com.example.stackoverflowapp.core.ui.desingsystem.SoTypography
+import com.example.stackoverflowapp.core.ui.designsystem.SoDimens
+import com.example.stackoverflowapp.core.ui.designsystem.SoTypography
 import com.example.stackoverflowapp.core.ui.formatters.formatReputation
-import com.example.stackoverflowapp.core.ui.theme.StackUsersTheme
+import com.example.stackoverflowapp.core.ui.theme.StackOverflowTheme
 
 @Composable
 fun UserCard(
@@ -101,7 +101,7 @@ fun UserCard(
 @Preview
 @Composable
 private fun UserCardFollowedPreview() {
-    StackUsersTheme {
+    StackOverflowTheme {
         UserCard(
             avatarUrl = null,
             displayName = "Arnel Maric",
