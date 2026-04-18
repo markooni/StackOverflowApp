@@ -1,4 +1,4 @@
-package com.example.stackoverflowapp.features.users.remote.dto
+package com.example.stackoverflowapp.features.users.data.remote.dto
 
 object UserDtoConstants {
     const val USER_ID = "user_id"
