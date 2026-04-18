@@ -7,8 +7,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.example.stackoverflowapp.core.ui.desingsystem.SoDimens
-import com.example.stackoverflowapp.core.ui.desingsystem.SoTypography
+import com.example.stackoverflowapp.core.ui.designsystem.SoDimens
+import com.example.stackoverflowapp.core.ui.designsystem.SoTypography
 
 @Composable
 fun UserListTopBar() {
