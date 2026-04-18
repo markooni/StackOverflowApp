@@ -1,4 +1,4 @@
-package com.example.stackoverflowapp.features.users.remote
+package com.example.stackoverflowapp.features.users.data.remote
 
 object StackOverflowApiConstants {
     const val USERS_ENDPOINT = "2.2/users"
