@@ -8,7 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.stackoverflowapp.core.ui.theme.SoOrange
-import com.example.stackoverflowapp.core.ui.theme.StackUsersTheme
+import com.example.stackoverflowapp.core.ui.theme.StackOverflowTheme
 
 @Composable
 fun LoadingState(
@@ -28,7 +28,7 @@ fun LoadingState(
 @Preview
 @Composable
 private fun LoadingStatePreview() {
-    StackUsersTheme {
+    StackOverflowTheme {
         LoadingState()
     }
 }
